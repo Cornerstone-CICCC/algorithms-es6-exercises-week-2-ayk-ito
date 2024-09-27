@@ -9,6 +9,13 @@ Create a function named numberOfVowels that will receive a string and return the
 
 const numberOfVowels = function (data) {
   // Put your solution here
+  const vowels = ["a", "e", "i", "o", "u"];
+  const splitData = data.split("");
+  const count = splitData.filter((char) => {
+    return vowels.includes(char);
+  });
+
+  return count.length;
 };
 
 console.log(numberOfVowels("orange")); // 3
