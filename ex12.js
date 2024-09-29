@@ -22,10 +22,24 @@ This one is a doozy! We might want to start by creating a helper function called
 
 const chooseRecipe = function (bakeryA, bakeryB, recipes) {
   // Code here!
+  const recipe = recipes.filter((recipe) => {
+    const [ingredient1, ingredient2] = recipe.ingredients;
+    const foundInBakeryA = bakeryA.includes(ingredient1) || bakeryA.includes(ingredient2);
+    const foundInBakeryB = bakeryB.includes(ingredient1) || bakeryB.includes(ingredient2);
+
+    // console.log(foundInBakeryA, foundInBakeryB);
+
+    return foundInBakeryA && foundInBakeryB;
+  });
+
+  if (recipe[0]) {
+    return recipe[0].name;
+  }
 };
 
 let bakeryA = ["saffron", "eggs", "tomato paste", "coconut", "custard"];
 let bakeryB = ["milk", "butter", "cream cheese"];
+
 let recipes = [
   {
     name: "Coconut Sponge Cake",
