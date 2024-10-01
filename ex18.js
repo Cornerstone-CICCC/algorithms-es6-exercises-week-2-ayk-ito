@@ -24,15 +24,31 @@ Create a function named squareCode that will receive a message, and return the s
 
 const squareCode = function (message) {
   // Put your solution here
+  const messageArr = [];
+  let result;
+  let resultArr = [];
+
+  const noSpaceMessage = message.replaceAll(" ", "");
+  const root = parseInt(Math.sqrt(noSpaceMessage.length));
+
+  for (let i = 0; i < noSpaceMessage.length; i = i + root + 1) {
+    messageArr.push(noSpaceMessage.slice(i, i + root + 1));
+  }
+  // console.log(messageArr);
+  for (let k = 0; k < root + 1; k++) {
+    resultArr[k] = "";
+    for (let j = 0; j < messageArr.length; j++) {
+      resultArr[k] = resultArr[k] + messageArr[j].charAt(k);
+    }
+  }
+  // console.log(resultArr);
+  result = resultArr.join(" ");
+  return result;
 };
 
 console.log(squareCode("chill out")); // clu hlt io
 console.log(squareCode("feed the dog")); // fto ehg ee dd
 console.log(squareCode("have a nice day")); // hae and via ecy
-console.log(
-  squareCode(
-    "if man was meant to stay on the ground god would have given us roots"
-  )
-); // imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau
+console.log(squareCode("if man was meant to stay on the ground god would have given us roots")); // imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau
 
 module.exports = squareCode;
