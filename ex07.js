@@ -10,30 +10,32 @@ Not sure where to get started? It might be useful to start by creating a variabl
 
 const checkAir = function (samples, threshold) {
   // Code here!
+  let dirtyCount = 0;
+  let dirtyLate = 0;
+
+  samples.filter((sample) => {
+    if (sample == "dirty") {
+      dirtyCount++;
+    }
+  });
+
+  dirtyLate = dirtyCount / samples.length;
+  if (dirtyLate > threshold) {
+    return "Polluted";
+  } else {
+    return "Clean";
+  }
 };
 
 console.log(
   checkAir(
-    [
-      "clean",
-      "clean",
-      "dirty",
-      "clean",
-      "dirty",
-      "clean",
-      "clean",
-      "dirty",
-      "clean",
-      "dirty",
-    ],
+    ["clean", "clean", "dirty", "clean", "dirty", "clean", "clean", "dirty", "clean", "dirty"],
     0.3
   )
 ); // Polluted
 
 console.log(checkAir(["dirty", "dirty", "dirty", "dirty", "clean"], 0.25)); // Polluted
 
-console.log(
-  checkAir(["clean", "dirty", "clean", "dirty", "clean", "dirty", "clean"], 0.9)
-); // Clean
+console.log(checkAir(["clean", "dirty", "clean", "dirty", "clean", "dirty", "clean"], 0.9)); // Clean
 
 module.exports = checkAir;
