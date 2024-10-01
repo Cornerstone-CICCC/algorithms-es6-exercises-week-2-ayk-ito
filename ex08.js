@@ -10,6 +10,13 @@ Create a function named repeatNumbers that will return a string with each of the
 
 const repeatNumbers = function (data) {
   // Put your solution here
+  let result = [];
+  data.forEach((element) => {
+    const value = element[0];
+    const repeatTime = element[1];
+    result.push(value.toString().repeat(repeatTime));
+  });
+  return result.join(", ");
 };
 
 console.log(repeatNumbers([[1, 10]])); // 1111111111
